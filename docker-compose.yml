@@ -1,0 +1,27 @@
+services:
+  backend:
+    build:
+      context: ./src/app/backend
+    container_name: backend
+    environment:
+      - PORT=8000
+      # Add all environment variables here
+    ports:
+      - "8000:8000"
+    #Uncomment this line if you want to persist the data for the backend
+    #    volumes:
+    #      - backend-data:/usr/src/app
+  
+    networks:
+      - gt-network
+
+networks:
+  gt-network:
+    driver: bridge
+#Volumes for persisting data
+volumes:
+  backend_data:
+    driver: local
+  
+
+
